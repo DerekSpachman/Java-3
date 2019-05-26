@@ -1,4 +1,5 @@
 /*
+ * test
  * 
  */
 package dataStructures;
@@ -98,13 +99,11 @@ public class MyArrayList<T>{
         array = (T[])new Object[length];
     }
     
-    
     /**
      * Checks if MyArrayList contains anything.
      * @return if MyArrayList contains anything.
      */
     public boolean isEmpty(){ return size == 0; }
-    
     
     public void remove(T e){
         boolean found = false;
@@ -166,7 +165,6 @@ public class MyArrayList<T>{
      * @return size.
      */
     public int getSize(){ return size; }
-    
     
     public static void main(String[] args){
         MyArrayList a = new MyArrayList(5);
