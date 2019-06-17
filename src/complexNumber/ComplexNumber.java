@@ -1,5 +1,8 @@
 /*
- * 
+ * This class creates a complex number, a number with a real part and an 
+ * imaginary part: 2 + 3i. Complex numbers may be added, subtracted, 
+ * multiplied, divided, as well as have the magnitude found, and check for 
+ * equality between two comlex numbers.
  * 
  * @author Derek Spachman (2019)
  */

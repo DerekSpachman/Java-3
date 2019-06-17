@@ -1,6 +1,6 @@
 /*
  * A Stck in Java is a data structure that contains a stack of Objects. Stacks
- * follow a first in last out policy. This stck uses doublely linked list.
+ * follow a first in last out policy. This stack uses doublely linked list.
  */
 package dataStructures;
 

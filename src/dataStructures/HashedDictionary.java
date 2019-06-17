@@ -4,6 +4,8 @@
  * word is stored there (a collision), then the word and it's description will
  * be placed in the next available index. One may also look for a word and see
  * the word formatted with all it's descriptions.
+ * 
+ * @author Derek Spachman
  */
 package dataStructures;
 
