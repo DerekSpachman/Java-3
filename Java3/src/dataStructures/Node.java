@@ -1,5 +1,7 @@
 /*
+ * Node to store generic data.
  * 
+ * @author Derek Spachman (2019)
  */
 package dataStructures;
 
@@ -8,7 +10,8 @@ public class Node<T>{
     private T data;
     private Node link;
 
-    //explicit constructor
+    //constructors
+    Node() { data = null; link = null; }
     Node(T d, Node l){ data = d; link = l; }
     
     //accessors

@@ -1,6 +1,7 @@
 /*
- * test
+ * Mimics the ArrayList class using arrays.
  * 
+ * @author Derek Spachman (2019)
  */
 package dataStructures;
 
@@ -12,7 +13,7 @@ public class MyArrayList<T>{
     private int DEFAULT_LENGTH = 10;
     
     /**
-     * Default constructor.
+     * Sets length to 0.
      */
     MyArrayList(){
         size = 0;
@@ -37,7 +38,7 @@ public class MyArrayList<T>{
      */
     public T get(int index){
         if(index > size)
-            System.out.println(errorMessages.Errors.arrayOutOfBounds());
+            throw new exceptionHandler.IndexOutOfBoundsException("Array out of bounds in get().");
         return array[index];
     }
     
@@ -60,7 +61,7 @@ public class MyArrayList<T>{
      */
     public void add(int index, T e){
         if(index >= size)
-            System.out.println(errorMessages.Errors.arrayOutOfBounds());
+            throw new exceptionHandler.IndexOutOfBoundsException("Array out of bounds in add(int, T).");
         else{
             T temp = array[index];
             array[index] = e;
@@ -87,7 +88,7 @@ public class MyArrayList<T>{
      */
     public void set(int index, T e){
         if(index > size)
-            System.out.println(errorMessages.Errors.arrayOutOfBounds());
+           throw new exceptionHandler.IndexOutOfBoundsException("Array out of bounds in set().");
         array[index] = e;
     }
     
@@ -130,22 +131,20 @@ public class MyArrayList<T>{
      */
     public T remove(int index){
         if(index >= size)
-            System.out.println(errorMessages.Errors.arrayOutOfBounds());
-        else{
-            T toReturn = array[index];
-            T temp[] = (T[])new Object[size-1];
+            throw new exceptionHandler.IndexOutOfBoundsException("Array out of bounds in get().");
+        
+        T toReturn = array[index];
+        T temp[] = (T[])new Object[size-1];
 
-            for (int i = 0; i < size; i++) {
-                if(i < index)
-                    temp[i] = array[i];
-                else if(i > index)
-                    temp[i-1] = array[i];
-            }
-            array = temp;
-            size--;
-            return toReturn;
+        for (int i = 0; i < size; i++) {
+            if(i < index)
+                temp[i] = array[i];
+            else if(i > index)
+                temp[i-1] = array[i];
         }
-        return (T)"";
+        array = temp;
+        size--;
+        return toReturn;
     }
     
     /**

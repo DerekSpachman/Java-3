@@ -12,8 +12,12 @@ package complexNumber;
 public class ComplexNumber {
     private int a, b;
     
-    //explicit constructor
-    ComplexNumber(int a, int b){
+    /**
+     * 
+     * @param a the real number.
+     * @param b the imaginary number.
+     */
+    public ComplexNumber(int a, int b){
         this.a = a;
         this.b = b;
     }
