@@ -1,12 +1,9 @@
 /*
- *
- *
+ * A large number of simple recursive projects are contained in this class. 
+ * 
  * @author Derek Spachman
  */
 package recursion;
-
-import java.util.Iterator;
-import java.util.Stack;
 
 public class SimpleRecursion {
     
@@ -62,44 +59,43 @@ public class SimpleRecursion {
     }
     
     /**
-     * 
-     * @param word
-     * @param index
-     * @param elf
-     * @param i
-     * @return 
+     * Determines if a given word contains "elf".
+     * @param word word to be checked if it contains "elf".
+     * @param index current index of word.
+     * @param count number of correct characters.
+     * @return true if word contains "elf" else false.
      */
-    public static boolean elfish(String word, int index, String elf, int i) {
-        if(elf.equals("elf"))
+    public static boolean elfish(String word, int index, int count) {
+        if(count == 3)
             return true;
-        if(word.charAt(index) != "elf".charAt(i)) {
-            elf = "";
-            i = 0;
-        }
-        if(word.charAt(index) == "elf".charAt(i)){
-            elf += word.charAt(index);
-            i++;
-        }
-        return elfish(word, index+1, elf, i);
+        if(word.charAt(index) != "elf".charAt(count))
+            count = 0;
+        if(word.charAt(index) == "elf".charAt(count))
+            count++;
+        return elfish(word, index+1, count);
     }
     
-    
-    public static boolean xish(String word, int index, String x, int i) {
+    /**
+     * Determines if a given word contains x.
+     * @param word word to be checked if it contains x.
+     * @param index current index of word.
+     * @param x word of interest.
+     * @param count number of correct characters.
+     * @return true if word contains x else false.
+     */
+    public static boolean xish(String word, int index, String x, int count) {
         if(x.equals(x))
             return true;
-        if(word.charAt(index) != x.charAt(i)) {
+        if(word.charAt(index) != x.charAt(count)) {
             x = "";
-            i = 0;
+            count = 0;
         }
-        if(word.charAt(index) == x.charAt(i)){
+        if(word.charAt(index) == x.charAt(count)){
             x += word.charAt(index);
-            i++;
+            count++;
         }
-        return elfish(word, index+1, x, i);
+        return xish(word, index+1, x, count);
     }
-    
-    
-    
     
     
     public static void main(String[] args) {
@@ -140,33 +136,49 @@ public class SimpleRecursion {
         SimpleRecursion.Subsets ob = simpleRecursion.new Subsets("word");
         //System.out.println(ob.findSubset());
         
-        //System.out.println("");
-        
-        SimpleRecursion.Hanoi hanoi = simpleRecursion.new Hanoi(3);
-        System.out.println(hanoi.play(hanoi));
     }
     
-    
+    /**
+     * Recursively finds all subsets of a given word.
+     * 
+     * @author Derek Spachman
+     */
     public class Subsets {
         private String word;
         private int index;
         private String subsets;
         
+        /**
+         * The initial constructor.
+         * @param word is the word to be broken apart.
+         */
         public Subsets(String word) {
             this.word = word;
             index = 0;
             subsets = word+" ";
         }
         
+        /**
+         * The constructor to be called during recursion.
+         * @param word is the word to be broken apart.
+         * @param index is where the current recursion stage is along word.
+         * @param subset is the collection of subsets.
+         */
         public Subsets(String word, int index, String subset) {
             this.word = word;
             this.index = index;
             subsets = subset;
         }
         
-        
+        /**
+         * @return all the subsets currently discovered.
+         */
         public String getSubsets() { return subsets; }
         
+        /**
+         * Method that actually finds the subsets.
+         * @return all the subsets of the word.
+         */
         public String findSubset() {
             if(index == word.length()-1){
                 return subsets+" "+word.charAt(index)+" { }";
@@ -177,7 +189,7 @@ public class SimpleRecursion {
         }
     }
     
-    /*
+    /**
      * This class provides an instance version of the ancientSquareRoot() in 
      * the SimpleRecurssion class.
      */
@@ -186,107 +198,27 @@ public class SimpleRecursion {
         private double guess;
         private int index;
         
+        /**
+         * Constructor
+         * @param base base number.
+         * @param guess user guess that increases in accuracy with each
+         * recursive stage.
+         * @param index number of times the recursion will occur.
+         */
         public AncientAlgorithm(double base, double guess, int index) {
             this.base = base;
             this.guess = guess;
             this.index = index;
         }
         
+        /**
+         * @return the square root of the given attributes.
+         */
         public double squareRoot() {
             if(index <= 1)
                 return (guess+base/guess)/2;
             return new SimpleRecursion.AncientAlgorithm(base, 
                     (guess+base/guess)/2, index-1).squareRoot();
         }
-    }
-    
-    
-    public class Hanoi {
-        private int disks; //number of disks
-        private Stack peg1;
-        private Stack peg2;
-        private Stack peg3;
-        
-        public Hanoi(int size) {
-            disks = size;
-            peg1 = new Stack();
-            peg2 = new Stack();
-            peg3 = new Stack();
-            for (int i = disks-1; i >= 0; i--)
-                peg1.push(i);
-        }
-        
-        
-        public String play(Hanoi hanoi) {
-            if(gameOver())
-                return this.toString();
-            //change object
-            return this.toString()+"\n\n"+play(hanoi);
-            
-        }
-        
-        
-        //move method
-        public void move() {
-            //if() {
-                
-            //}
-        }
-        
-        
-        private boolean validMove() {
-            //if()
-                
-            return false;
-        }
-        
-        
-        private boolean gameOver() { 
-            int p1, p2, p3;
-            p1 = p2 = p3 = 0;
-            
-            for(Iterator itr = peg1.iterator(); itr.hasNext(); itr.next())
-                p1++;
-            if(p1 == disks)
-                return true;
-            
-            for(Iterator itr = peg2.iterator(); itr.hasNext(); itr.next())
-                p2++;
-            if(p2 == disks)
-                return true;
-            
-            for(Iterator itr = peg3.iterator(); itr.hasNext(); itr.next())
-                p3++;
-            if(p3 == disks)
-                return true;
-            
-            return false;
-        }
-        
-        
-        @Override
-        public String toString() {
-            Iterator itr1 = peg1.iterator();
-            Iterator itr2 = peg2.iterator();
-            Iterator itr3 = peg3.iterator();
-            
-            String toReturn ="peg1\tpeg2\tpeg3\n-------------------------\n";
-            while(itr1.hasNext() || itr2.hasNext() || itr3.hasNext()) {
-                if(itr1.hasNext())
-                    toReturn += itr1.next()+"\t";
-                else
-                    toReturn += " \t";
-                if(itr2.hasNext())
-                    toReturn += itr2.next()+"\t";
-                else
-                    toReturn += " \t";
-                if(itr3.hasNext())
-                    toReturn += itr3.next();
-                toReturn += "\n";
-            }
-            
-            return toReturn;
-        }
-        
     }
 }

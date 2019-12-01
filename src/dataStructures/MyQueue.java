@@ -3,7 +3,7 @@
  * element to enter the queue will be the first to leave the queue. This 
  * queue uses linked list technique.
  * 
- * @author Derek Spachman
+ * @author Derek Spachman (2019)
  */
 package dataStructures;
 

@@ -1,7 +1,8 @@
 /*
+ * Works much like the MyArrayList using an array to store info but keeps 
+ * data ordered.
  * 
- * 
- * @author user
+ * @author Derek Spachman (2019)
  */
 package dataStructures;
 
@@ -12,6 +13,9 @@ public class MyOrderedList<T> {//implements Comparator{
     private int size;
     private int length;
     
+    /**
+     * Length starts at 100.
+     */
     MyOrderedList() {
         size = 0;
         length = 100;

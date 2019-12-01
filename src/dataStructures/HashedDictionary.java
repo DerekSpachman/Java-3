@@ -1,11 +1,11 @@
-/*
+/*TEST
  * This dictonary adds words and their descriptions to an array. Words hash 
  * code is found then stored in the array based on that hash code. If another
  * word is stored there (a collision), then the word and it's description will
  * be placed in the next available index. One may also look for a word and see
  * the word formatted with all it's descriptions.
  * 
- * @author Derek Spachman
+ * @author Derek Spachman (2019)
  */
 package dataStructures;
 
@@ -13,10 +13,12 @@ public class HashedDictionary<T> {
     private Node array[];
     private static int length;
     
+    /**
+     * Implicit constructor. Sets length to 50,000.
+     */
     HashedDictionary(){
         length = 50000;
         array = new Node[length];
-        
     }
     
     /**

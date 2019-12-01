@@ -1,5 +1,7 @@
 /*
+ * Node to store generic data.
  * 
+ * @author Derek Spachman (2019)
  */
 package dataStructures;
 
