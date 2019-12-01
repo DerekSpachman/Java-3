@@ -1,4 +1,4 @@
-/*TEST
+/*
  * This dictonary adds words and their descriptions to an array. Words hash 
  * code is found then stored in the array based on that hash code. If another
  * word is stored there (a collision), then the word and it's description will
