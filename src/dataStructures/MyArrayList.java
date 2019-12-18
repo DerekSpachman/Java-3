@@ -13,7 +13,7 @@ public class MyArrayList<T>{
     private int DEFAULT_LENGTH = 10;
     
     /**
-     * Sets length to 0.
+     * Sets length to 10.
      */
     MyArrayList(){
         size = 0;
